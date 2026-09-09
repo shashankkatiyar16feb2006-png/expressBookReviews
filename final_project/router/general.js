@@ -118,6 +118,19 @@ public_users.get('/title/:title', function (req, res) {
 
 });
 
+// Task 13: Get books by title using Async/Await with Axios
+public_users.get('/async/title/:title', async function (req, res) {
+    try {
+        const title = req.params.title;
+        const response = await axios.get('http://localhost:5000/title/' + title);
+        res.json(response.data);
+    } catch (error) {
+        res.status(500).json({
+            message: "Error fetching books by title"
+        });
+    }
+});
+
 //  Get book review
 public_users.get('/review/:isbn', function (req, res) {
 
